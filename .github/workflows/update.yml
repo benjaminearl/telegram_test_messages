@@ -22,8 +22,8 @@ jobs:
 
       - name: Run export script
         env:
-          BOT_TOKEN: 7988675078:AAEfOv03wcZQ_Ooa9-kHYWU9qOSoLP8ZGp8
-          CHAT_ID: -1002840300565
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           python fetch_telegram.py
 
