@@ -1,0 +1,37 @@
+name: Update Telegram Messages
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # every 10 minutes
+  workflow_dispatch:        # allow manual run
+
+jobs:
+  update-messages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run export script
+        env:
+          BOT_TOKEN: 7988675078:AAEfOv03wcZQ_Ooa9-kHYWU9qOSoLP8ZGp8
+          CHAT_ID: -1002840300565
+        run: |
+          python fetch_telegram.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add messages.json
+          git commit -m "Update messages from Telegram"
+          git push
+        continue-on-error: true

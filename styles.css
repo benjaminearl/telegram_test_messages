@@ -1,0 +1,156 @@
+@font-face {
+  font-family: 'Briz';
+  src: url(fonts/Briz.otf) format("opentype");
+}
+
+:root {
+    /* || PRIMITIVES */
+    --color_000:    #ffffff;
+    --color_005:    #f2f2f2;
+    --color_010:    #E5E5E5;
+    --color_020:    #CCCCCC;
+    --color_030:    #B2B2B2;
+    --color_040:    #999999;
+    --color_050:    #808080;
+    --color_060:    #666666;
+    --color_070:    #4D4D4D;
+    --color_080:    #333333;
+    --color_090:    #1A1A1A;
+    --color_100:    #000000;
+
+    --color_sage:  #C3D1C6;
+    --color_brown: #592D2E;
+    --color_yellow:#F9F27F;
+
+
+    --spacing_0:    0;
+    --spacing_xs:   0.25rem;
+    --spacing_s:    0.5rem;
+    --spacing_m:    1rem;
+    --spacing_l:    2rem;
+    --spacing_xl:   4rem;
+
+    --radius_s:     0.5rem;
+    --radius_m:     1rem;
+    --radius_l:     50%;
+
+    --font-size_s:  0.8rem;
+    --font-size_m:  1rem;
+    --font-size_l:  1.5rem;
+    --font-size_xl: 2rem;
+
+    --font_primary:         'IBM Plex Mono', monospace;
+    --font_secondary:       'Briz', times new roman, serif;
+
+    --font-weight_regular:  normal;
+    --font-weight_bold:     bold;
+
+    --line-height_normal:   1.2;
+
+    /* || SEMANTIC */
+    --color_background_primary:     var(--color_sage);
+    --color_background_secondary:   var(--color_yellow);
+    --color_text_normal:            var(--color_brown);
+    --color_text_muted:             var(--color_060);
+    --color_text_highlighted: ;
+    --color_text_hover: ;
+    --color_border_normal:          var(--color_brown);
+    --color_border_muted:           var(--color_yellow);
+
+    --spacing_outer-margin:         0 var(--spacing_m);
+    --spacing_section-margin:       var(--spacing_s) 0;
+    --spacing_inner-padding:        var(--spacing_s);
+
+    --font-size_title:              var(--font-size_xl);
+    --font-size_body: ;
+
+    --border_normal:                1px solid var(--color_border_normal);
+    --border_muted:                 1px solid var(--color_border_muted);
+
+    /* || COMPONENT-SPECIFIC */
+}
+
+* {
+    /* background-color: #592D2E10; */
+}
+html {
+    font-size: 16px;
+}
+body {
+    background-color: var(--color_background_primary);
+    color: var(--color_text_normal);
+    font-family: var(--font_primary);
+    margin: 0;
+}
+
+
+.site-container {
+    margin: var(--spacing_outer-margin);
+}
+
+.header {
+    margin: var(--spacing_section-margin);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+   margin: var(--spacing_section-margin); 
+   position: fixed;
+   bottom: 0;
+}
+
+.section {
+    margin: var(--spacing_section-margin);
+}
+
+.garden {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    gap: var(--spacing_m);
+}
+.garden__patch {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing_inner-padding);
+    background-color: var(--color_background_secondary);
+}
+
+
+/* || TXT */
+.site-title {
+    font-family: var(--font_secondary);
+    color: var(--color_text_normal);
+    text-transform: uppercase;
+    font-size: var(--font-size_title);
+    text-decoration: none;
+}
+
+
+/* || AUDIO */
+.audio {
+}
+
+.audio__ui {
+    display: flex;
+    align-items: center;
+}
+
+.audio__playBtn {
+    cursor: pointer;
+    background: none;
+    color: var(--color_text_normal);
+    border: var(--border_normal);
+    border-radius: var(--radius_m);
+}
+
+.audio__playBtn:hover {
+    background-color: var(--color_background_secondary);
+}

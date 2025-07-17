@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Gardening Summer School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="site-container">
+        <header class="header">
+            <a href="" class="site-title">Radio<br>Gardening<br>Summer School</a>
+        </header>
+        <main class="main">
+            <section class="section">
+                <div class="garden">
+                    <div class="garden__patch">
+                        <div class="audio">
+                            <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3"></audio>
+                            <div class="audio__ui">
+                                <button class="audio__playBtn">Tune in</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="garden__patch">
+                        <div class="audio">
+                            <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8000/radio.mp3"></audio>
+                            <div class="audio__ui">
+                                <button class="audio__playBtn">Tune in</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="garden__patch">
+                        <div class="audio">
+                            <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8000/radio.mp3"></audio>
+                            <div class="audio__ui">
+                                <button class="audio__playBtn">Tune in</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <h2>Latest Messages</h2>
+            <ul id="messages"></ul>
+
+            <script>
+            fetch('messages.json')
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById('messages');
+                list.innerHTML = '';
+                data.reverse().forEach(msg => {
+                const li = document.createElement('li');
+                li.textContent = `${msg.user}: ${msg.text}`;
+                list.appendChild(li);
+                });
+            });
+            </script>
+        </main>
+        <footer class="footer">
+            <a href="https://robidacollective.com/" target="_blank">Go to main website</a>
+        </footer>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
