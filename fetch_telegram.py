@@ -36,6 +36,8 @@ for upd in data:
             image_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_path}"
             backgrounds[div_id] = image_url
 
+print(image_url)
+
 with open("backgrounds.json", "w", encoding="utf-8") as f:
     json.dump(backgrounds, f, indent=2)
 
