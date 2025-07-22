@@ -41,21 +41,34 @@
                     </div>
                 </div>
             </section>
-            <h2>Latest Messages</h2>
             <ul id="messages"></ul>
 
             <script>
             fetch('messages.json')
             .then(res => res.json())
             .then(data => {
-                const list = document.getElementById('messages');
-                list.innerHTML = '';
+                const container = document.getElementById('messages')
+                container.innerHTML = ''
+
                 data.reverse().forEach(msg => {
-                const li = document.createElement('li');
-                li.textContent = `${msg.user}: ${msg.text}`;
-                list.appendChild(li);
-                });
-            });
+                const li = document.createElement('li')
+                // user & text
+                const txt = document.createElement('p')
+                txt.textContent = `${msg.user}: ${msg.text || ''}`
+                li.appendChild(txt)
+
+                // optional image
+                if (msg.photo_url) {
+                    const img = document.createElement('img')
+                    img.src = msg.photo_url
+                    img.alt = msg.text || 'Telegram photo'
+                    img.style.maxWidth = '300px'
+                    li.appendChild(img)
+                }
+
+                container.appendChild(li)
+                })
+            })
             </script>
         </main>
         <footer class="footer">
