@@ -1,5 +1,7 @@
 import os, requests, json
 
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHAT_ID   = os.environ["CHAT_ID"]
 
 CAPTION_TO_ID = {
     "1": "one",
