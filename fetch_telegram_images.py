@@ -48,7 +48,7 @@ for upd in data:
             img_file.write(image_data)
 
         # Use local path in JSON (for GitHub Pages)
-        backgrounds[div_id] = f"/{IMAGE_DIR}/{image_name}"
+        backgrounds[div_id] = f"{IMAGE_DIR}/{image_name}"
         print(f"Saved image for div '{div_id}' → {local_path}")
 
 # Save to JSON
