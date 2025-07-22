@@ -120,7 +120,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: var(--spacing_inner-padding);
-    background-color: var(--color_background_secondary);
+    background-size: cover;
+    background-position: center;
 }
 
 
