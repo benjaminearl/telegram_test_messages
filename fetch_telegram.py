@@ -1,9 +1,16 @@
+# fetch_telegram.py
 import os, requests, json
 from datetime import datetime
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_ID   = os.environ["CHAT_ID"]
-VALID_IDS = {"one", "two", "three"}  # Allowed div targets
+
+# Map numeric captions to valid div IDs
+CAPTION_TO_ID = {
+    "1": "one",
+    "2": "two",
+    "3": "three"
+}
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
 resp = requests.get(url)
@@ -16,18 +23,18 @@ for upd in data:
     if not msg or str(msg["chat"]["id"]) != CHAT_ID:
         continue
 
-    # Only process if it has a photo and a caption that matches a div ID
     if "photo" in msg and "caption" in msg:
-        caption = msg["caption"].strip().lower()
-        if caption in VALID_IDS:
+        caption = msg["caption"].strip()
+        div_id = CAPTION_TO_ID.get(caption)
+
+        if div_id:
             file_id = msg["photo"][-1]["file_id"]
             file_info = requests.get(
                 f"https://api.telegram.org/bot{BOT_TOKEN}/getFile?file_id={file_id}"
             ).json()["result"]
             file_path = file_info["file_path"]
             image_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_path}"
-            backgrounds[caption] = image_url
+            backgrounds[div_id] = image_url
 
-# Save a JSON file mapping div IDs to background image URLs
 with open("backgrounds.json", "w", encoding="utf-8") as f:
     json.dump(backgrounds, f, indent=2)
