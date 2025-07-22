@@ -45,15 +45,18 @@
 
             <script>
             fetch('backgrounds.json')
-            .then(res => res.json())
-            .then(data => {
-                Object.keys(data).forEach(id => {
-                const div = document.getElementById(id)
-                if (div) {
-                    div.style.backgroundImage = `url(${data[id]})`
-                }
+                .then(res => res.json())
+                .then(data => {
+                ['one', 'two', 'three'].forEach(id => {
+                    const div = document.getElementById(id);
+                    if (div && data[id]) {
+                    div.style.backgroundImage = `url('${data[id]}')`;
+                    div.style.backgroundSize = 'cover';
+                    div.style.backgroundPosition = 'center';
+                    }
+                });
                 })
-            })
+                .catch(err => console.error("Error loading backgrounds:", err));
             </script>
         </main>
         <footer class="footer">
