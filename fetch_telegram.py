@@ -2,9 +2,9 @@
 import os, requests, json
 from datetime import datetime
 
-BOT_TOKEN = "7988675078:AAEfOv03wcZQ_Ooa9-kHYWU9qOSoLP8ZGp8"
-CHAT_ID = "-1002840300565"
-LIMIT = 50
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHAT_ID   = os.environ["CHAT_ID"]
+LIMIT     = 50
 
 # 1) get all pending updates
 resp = requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates")
