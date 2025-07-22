@@ -38,3 +38,29 @@ for upd in data:
 
 with open("backgrounds.json", "w", encoding="utf-8") as f:
     json.dump(backgrounds, f, indent=2)
+
+
+print("Checking Telegram updates...")
+
+for upd in data:
+    msg = upd.get("message")
+    if not msg:
+        continue
+    print("Got message:", msg)
+
+    if str(msg["chat"]["id"]) != CHAT_ID:
+        print("Chat ID doesn't match:", msg["chat"]["id"])
+        continue
+
+    if "photo" in msg and "caption" in msg:
+        caption = msg["caption"].strip()
+        print("Photo caption:", caption)
+
+        div_id = CAPTION_TO_ID.get(caption)
+        if div_id:
+            print(f"Matched caption '{caption}' to div '{div_id}'")
+            # then continue as normal
+        else:
+            print(f"Caption '{caption}' not in valid map:", CAPTION_TO_ID)
+    else:
+        print("Message has no photo and caption.")
