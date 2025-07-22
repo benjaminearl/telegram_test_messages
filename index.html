@@ -15,7 +15,7 @@
         <main class="main">
             <section class="section">
                 <div class="garden">
-                    <div class="garden__patch">
+                    <div class="garden__patch" id="one">
                         <div class="audio">
                             <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8060/radio.mp3"></audio>
                             <div class="audio__ui">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="garden__patch">
+                    <div class="garden__patch" id="two">
                         <div class="audio">
                             <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8000/radio.mp3"></audio>
                             <div class="audio__ui">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="garden__patch">
+                    <div class="garden__patch" id="three">
                         <div class="audio">
                             <audio class="audio__source" src="https://radio.goodtimesbadtimes.club/radio/8000/radio.mp3"></audio>
                             <div class="audio__ui">
@@ -44,29 +44,14 @@
             <ul id="messages"></ul>
 
             <script>
-            fetch('messages.json')
+            fetch('backgrounds.json')
             .then(res => res.json())
             .then(data => {
-                const container = document.getElementById('messages')
-                container.innerHTML = ''
-
-                data.reverse().forEach(msg => {
-                const li = document.createElement('li')
-                // user & text
-                const txt = document.createElement('p')
-                txt.textContent = `${msg.user}: ${msg.text || ''}`
-                li.appendChild(txt)
-
-                // optional image
-                if (msg.photo_url) {
-                    const img = document.createElement('img')
-                    img.src = msg.photo_url
-                    img.alt = msg.text || 'Telegram photo'
-                    img.style.maxWidth = '300px'
-                    li.appendChild(img)
+                Object.keys(data).forEach(id => {
+                const div = document.getElementById(id)
+                if (div) {
+                    div.style.backgroundImage = `url(${data[id]})`
                 }
-
-                container.appendChild(li)
                 })
             })
             </script>
