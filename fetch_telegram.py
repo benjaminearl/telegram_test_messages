@@ -1,13 +1,13 @@
 import os, requests, json
 
-BOT_TOKEN = os.environ["BOT_TOKEN"]
-CHAT_ID   = os.environ["CHAT_ID"]
 
 CAPTION_TO_ID = {
     "1": "one",
     "2": "two",
     "3": "three"
 }
+
+print("Current working directory:", os.getcwd())
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
 resp = requests.get(url)
