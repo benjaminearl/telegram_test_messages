@@ -147,11 +147,7 @@ body {
 .audio__playBtn {
     cursor: pointer;
     background: none;
-    color: var(--color_text_normal);
+    color: var(--color_background_secondary);
     border: var(--border_normal);
     border-radius: var(--radius_m);
-}
-
-.audio__playBtn:hover {
-    background-color: var(--color_background_secondary);
 }
