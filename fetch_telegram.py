@@ -39,3 +39,6 @@ for upd in data:
 # only keep the last LIMIT messages
 with open("messages.json", "w", encoding="utf-8") as f:
     json.dump(messages[-LIMIT:], f, ensure_ascii=False, indent=2)
+
+print("Bot token starts with:", os.environ["BOT_TOKEN"][:10])
+print("Chat ID is:", os.environ["CHAT_ID"])
