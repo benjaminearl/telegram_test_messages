@@ -54,9 +54,17 @@ for upd in data:
 
 print("Final backgrounds dict:", backgrounds)
 
+print("Saving backgrounds.json in:", os.path.abspath("backgrounds.json"))
+print("Final backgrounds dict:", backgrounds)
+
+with open("backgrounds.json", "w") as f:
+    f.write('{"test":123}')
+
 if backgrounds:
     with open("backgrounds.json", "w", encoding="utf-8") as f:
         json.dump(backgrounds, f, indent=2)
     print("Saved backgrounds.json")
 else:
     print("No backgrounds to save")
+
+
