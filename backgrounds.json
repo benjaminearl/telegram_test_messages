@@ -1,3 +1,5 @@
 {
-  "two": "images/file_0.jpg"
+  "two": "images/file_0.jpg",
+  "one": "images/file_1.jpg",
+  "three": "images/file_2.jpg"
 }
