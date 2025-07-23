@@ -42,16 +42,13 @@ for upd in data:
         image_name = file_path.split("/")[-1]
         local_path = os.path.join(IMAGE_DIR, image_name)
 
-        # Download the image and save locally
         image_data = requests.get(image_url).content
         with open(local_path, "wb") as img_file:
             img_file.write(image_data)
 
-        # Use local path in JSON (for GitHub Pages)
         backgrounds[div_id] = f"{IMAGE_DIR}/{image_name}"
         print(f"Saved image for div '{div_id}' → {local_path}")
 
-# Save to JSON
 with open("backgrounds.json", "w", encoding="utf-8") as f:
     json.dump(backgrounds, f, indent=2)
 
