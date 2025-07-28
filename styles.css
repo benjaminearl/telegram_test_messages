@@ -146,7 +146,7 @@ body {
 
 .audio__playBtn {
     cursor: pointer;
-    background: none;
+    background: var(--color_080); 
     color: var(--color_background_secondary);
     border: var(--border_normal);
     border-radius: var(--radius_m);
